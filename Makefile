@@ -1,13 +1,13 @@
 .PHONY: clean test unittest dist
 
-VERSION=$(shell jq .version manifest.json -r)
+VERSION=$(shell jq .version extension/manifest.json -r)
 
 dist: test zotxt-$(VERSION).xpi ;
 
 notest: zotxt-$(VERSION).xpi ;
 
-zotxt-$(VERSION).xpi: manifest.json background.js resource/translators/EasyKeyExporter.js 
-	zip -r zotxt-$(VERSION).xpi manifest.json background.js resource/
+zotxt-$(VERSION).xpi: extension/*.js extension/resource/translators/EasyKeyExporter.js 
+	cd extension && zip -r ../zotxt-$(VERSION).xpi *
 
 clean:
 	rm -f zotxt-*.xpi
