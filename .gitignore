@@ -6,3 +6,4 @@ pandoc-zotxt/venv/
 zotxt*.xpi
 node_modules
 .signatures.json
+extension/
